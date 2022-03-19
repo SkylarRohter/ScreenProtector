@@ -32,13 +32,14 @@ public class SPMain {
 	public static void main(String[] args) {
 		final MakeUser user = new MakeUser(exNames, UserList);
 		System.out.println(user.uuid);
-		final JFrame f = new JFrame("Screen Protector V-0.1");
+		final JFrame f = new JFrame("Screen Protector V-0.21");
+		f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		final JButton buy = new JButton("Buy");
 		buy.setBounds(160, 200, 80, 30);
-		buy.setBackground(Color.yellow);
+		buy.setBackground(Color.white);
 		final JButton login = new JButton("Login");
 		login.setBounds(160, 170, 80, 30);
-		login.setBackground(Color.green);
+		login.setBackground(Color.white);
 		final JButton back = new JButton("Back");
 		back.setBounds(160, 320, 80, 30);
 		final JLabel pasLabel = new JLabel("Password:");
@@ -53,6 +54,12 @@ public class SPMain {
 		final JPasswordField EntUser = new JPasswordField();
 		final JTextField EntPas = new JTextField();
 		quit.setBounds(160, 320, 80, 30);
+		// Set round borders for all buttons
+		back.setBorder(new RoundButtons(15));
+		login.setBorder(new RoundButtons(15));
+		quit.setBorder(new RoundButtons(15));
+		buy.setBorder(new RoundButtons(15));
+		//
 		f.add(quit);
 		f.add(buyLabel);
 		f.add(pasLabel);
@@ -102,6 +109,7 @@ public class SPMain {
 	private static void loginMenu(final MakeUser user, final JFrame f, final JButton buy, final JButton login,
 			final JButton back, final JLabel pasLabel, final JLabel uLabel, final JLabel buyLabel,
 			final JTextField EntPas, final JPasswordField EntUser) {
+		quit.setVisible(false);
 		login.setVisible(false);
 		buy.setVisible(false);
 		pasLabel.setVisible(true);
@@ -116,6 +124,7 @@ public class SPMain {
 		EnterText.setBounds(160, 200, 80, 30);
 		f.add(EnterText);
 		EnterText.setVisible(true);
+		EnterText.setBorder(new RoundButtons(15));
 		back.setVisible(true);
 		back.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -142,6 +151,7 @@ public class SPMain {
 			final JButton back, final JLabel pasLabel, final JLabel uLabel, final JLabel buyLabel,
 			final JTextField EntPas, final JPasswordField EntUser) {
 		buyLabel.setVisible(true);
+		quit.setVisible(false);
 		login.setVisible(false);
 		buy.setVisible(false);
 		back.setVisible(true);
